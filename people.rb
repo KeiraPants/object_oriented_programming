@@ -28,12 +28,34 @@ class Instructor < Person
   end
 end
 
-#Instance of the Instructor named "Chris" calling his greeting
+#Instance of the Instructor named "Chris"
+#calling his greeting
 chris = Instructor.new
 chris.name = "Chris"
 chris.greeting
 
-#Instance of the Student named "Christina" calling his greeting
+#Instance of the Student named "Christina"
+#calling her greeting
 christina = Student.new
 christina.name = "Christina"
 christina.greeting
+
+#Instance of the Instructor named "Chris"
+#calling his teach method
+chris = Instructor.new
+chris.name = "Chris"
+chris.teach
+
+#Instance of the Student named "Christina"
+#calling her learn method
+christina = Student.new
+christina.name = "Christina"
+christina.learn
+
+#This code doesn't work because Christina
+#doesn't have the ability (method) to teach.
+#This is because she's only a student,
+#she's NOT an Instructor!
+christina = Student.new
+christina.name = "Christina"
+christina.teach
