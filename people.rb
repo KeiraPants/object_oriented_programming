@@ -28,7 +28,12 @@ class Instructor < Person
   end
 end
 
-#Instance of the instructor named "Chris" calling his greeting
+#Instance of the Instructor named "Chris" calling his greeting
 chris = Instructor.new
 chris.name = "Chris"
-chris.teach
+chris.greeting
+
+#Instance of the Student named "Christina" calling his greeting
+christina = Student.new
+christina.name = "Christina"
+christina.greeting
