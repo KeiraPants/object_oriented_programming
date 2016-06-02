@@ -32,8 +32,10 @@ class Paperboy
        end
        puts "you delivered to #{count_odd} houses"
        money = count_odd * 0.25
+       @money = money
        puts "you earned #{money.to_f}"
        @experience += count_odd
+       @counter = count_odd
        puts "your XP is #{@experience}"
      end
 
@@ -49,8 +51,10 @@ class Paperboy
       end
       puts "you delivered to #{count_even} houses"
       money = count_even * 0.25
+      @money = money
       puts "you earned #{money.to_f}"
       @experience += count_even
+      @counter = count_even
       puts "your XP is #{@experience}"
      end
 
@@ -60,7 +64,13 @@ class Paperboy
 
   end #end paperboy_deliver method
 
-
+  def report
+    if @side == "even"
+      puts "Im #{name}, i delivered #{@counter} paper and earned #{@money.to_f}"
+    else
+      puts  "Im #{name}, i delivered #{@counter} paper and earned #{@money.to_f}"
+    end
+  end
 
   # def paperboy_report
   #
