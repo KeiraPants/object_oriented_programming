@@ -30,9 +30,11 @@ class Paperboy
          count_odd += 1
        end
        end
-       puts count_odd
+       puts "you delivered to #{count_odd} houses"
        money = count_odd * 0.25
-       puts money.to_f
+       puts "you earned #{money.to_f}"
+       @experience += count_odd
+       puts "your XP is #{@experience}"
      end
 
       #--------------------
@@ -45,9 +47,11 @@ class Paperboy
          count_even += 1
        end
       end
-      puts count_even
+      puts "you delivered to #{count_even} houses"
       money = count_even * 0.25
-      puts money.to_f
+      puts "you earned #{money.to_f}"
+      @experience += count_even
+      puts "your XP is #{@experience}"
      end
 
 
