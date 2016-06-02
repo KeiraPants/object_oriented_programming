@@ -20,6 +20,7 @@ class Paperboy
   def paperboy_deliver(start_address, end_address)
     count = 0
 
+    #--choosing odd side
     if @side == "odd"
       total_address = end_address - start_address
       for i in 0..total_address
@@ -29,7 +30,19 @@ class Paperboy
          count += 0
        end
      end
-      # puts count
+      #--------------------
+
+
+    # -- choosing even side
+    if @side == "even"
+      total_address = end_address - start_address
+      for i in 0..total_address
+       if i.to_i % 2 == 0
+         count += 1
+       else
+         count += 0
+       end
+     end
     end
 
   end
