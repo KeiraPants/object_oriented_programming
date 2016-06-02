@@ -14,10 +14,23 @@ class Paperboy
   end
 
   def paperboy_quota
-    quota = (experience / 2) + 50
+    quota = (@experience / 2) + 50
   end
 
   def paperboy_deliver(start_address, end_address)
+    count = 0
+
+    if @side == "odd"
+      total_address = end_address - start_address
+      for i in 0..total_address
+       if i.to_i % 2 != 0
+         count += 1
+       else
+         count += 0
+       end
+     end
+      # puts count
+    end
 
   end
 
@@ -26,3 +39,5 @@ class Paperboy
   end
 
 end
+
+#sam = Paperboy.new('sam', 50, 0, "odd", 0)
