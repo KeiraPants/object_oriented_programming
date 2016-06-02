@@ -18,39 +18,49 @@ class Paperboy
   end
 
   def paperboy_deliver(start_address, end_address)
-    count = 0
-
+    count_odd = 0
+    count_even = 0
+    total_address = end_address - start_address
     #--choosing odd side
     if @side == "odd"
-      total_address = end_address - start_address
+
       for i in 0..total_address
        if i.to_i % 2 != 0
-         count += 1
-       else
-         count += 0
+         count_odd += 1
        end
+       end
+       puts count_odd
+       money_odd = count_odd * 0.25
+       puts money_odd.to_f
      end
+
       #--------------------
 
 
     # -- choosing even side
     if @side == "even"
-      total_address = end_address - start_address
-      for i in 0..total_address
-       if i.to_i % 2 == 0
-         count += 1
-       else
-         count += 0
+      for x in 0..total_address
+       if x.to_i % 2 == 0
+         count_even += 1
        end
+      end
+      puts count_even
+      money_even = count_even * 0.25
+      puts money_even.to_f
      end
-    end
+
+
+     #--------end even side
+
 
   end
 
-  def paperboy_report
 
-  end
+
+  # def paperboy_report
+  #
+  # end
+
 
 end
-
 #sam = Paperboy.new('sam', 50, 0, "odd", 0)
