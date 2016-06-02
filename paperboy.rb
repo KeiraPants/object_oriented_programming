@@ -5,6 +5,7 @@ class Paperboy
   attr_accessor :name, :quota, :experience, :side
   attr_reader :earnings
 
+  # initializer
   def initialize(name, quota, experience, side, earnings)
     @name = name
     @quota = quota
@@ -30,8 +31,8 @@ class Paperboy
        end
        end
        puts count_odd
-       money_odd = count_odd * 0.25
-       puts money_odd.to_f
+       money = count_odd * 0.25
+       puts money.to_f
      end
 
       #--------------------
@@ -45,15 +46,15 @@ class Paperboy
        end
       end
       puts count_even
-      money_even = count_even * 0.25
-      puts money_even.to_f
+      money = count_even * 0.25
+      puts money.to_f
      end
 
 
      #--------end even side
 
 
-  end
+  end #end paperboy_deliver method
 
 
 
@@ -62,5 +63,5 @@ class Paperboy
   # end
 
 
-end
+end #end class
 #sam = Paperboy.new('sam', 50, 0, "odd", 0)
