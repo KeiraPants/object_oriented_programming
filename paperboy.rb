@@ -6,12 +6,14 @@ class Paperboy
   attr_reader :earnings
 
   # initializer
-  def initialize(name, quota, experience, side, earnings)
+  #Do not need to put all instance variables as PERAMETERS... Only REQUIRED information from the user
+  def initialize(name, side)
     @name = name
-    @quota = quota
-    @experience = experience
+    @quota = 50
+    @experience = 0
     @side = side
-    @earnings = earnings
+    @earnings = 0
+    @number_of_houses = 0
   end
 
   def paperboy_quota
@@ -19,77 +21,48 @@ class Paperboy
   end
 
   def paperboy_deliver(start_address, end_address)
-    count_odd = 0
-    count_even = 0
-    number_of_houses = end_address - start_address
-    #--choosing odd side
-    if @side == "odd"
+    #finding the number of houses that the paperboy delivers to
+    @number_of_houses = (end_address - start_address) / 2
+    #calculating his total money earned for those houses
+    amount = @number_of_houses * 0.25
+    #Calculates the number of extra houses he delivered to
+    bonus_houses = (@number_of_houses - quota)
+    #calculating extra houses that he delivered to
+    #multiplied by the extra .50
+    bonus = (@number_of_houses - quota) * 0.50
+    # puts "#{name} has delievered to #{number_of_houses} houses!"
+    # puts "#{name} has earned $#{amount}!"
+    # puts "#{name} has earned an extra $#{bonus} for surpassing his quota, and delivering to an extra #{bonus_houses} houses!"
 
-      for i in 1..number_of_houses
-       if i.to_i % 2 != 0
-         count_odd += 1
-       end
-      end
-       puts "you delivered to #{count_odd} houses"
-       money = count_odd * 0.25
-       @money = money
-       puts "you earned #{money.to_f}"
-       @experience += count_odd
-       @counter = count_odd
-       puts "your XP is #{@experience}"
+    #Updating (counting) the paperboy's experience with
+    #EACH house that he delivers to
+    @experience += @number_of_houses
+    puts "#{name} has #{@experience} experience!"
+#----
+    #If the paperboy exceeds his quota this adds
+    #his total earnings to the bonus money he's earned
+    if bonus > 0
+      @earnings = amount + bonus
+      puts "#{name} has earned a total of #{@earnings}!"
+    #Else earnings is ONLY the total amount without
+    #any bonus
+    else
+      @earnings = amount
+      puts "#{name} has earned a total of #{amount}"
     end
-
-      #--------------------
-
-
-    # -- choosing even side
-    if @side == "even"
-      for x in 1..number_of_houses
-       if x.to_i % 2 == 0
-         count_even += 1
-       end
-      end
-      puts "you delivered to #{count_even} houses"
-
-      money = count_even * 0.25
-      @money = money
-      puts "you earned #{money.to_f}"
-      @experience += count_even
-      @counter = count_even
-      puts "your XP is #{@experience}"
-    end
-
-
-     #--------end even side
-
-    #   ##The paperboy gets paid an extra .50 per paper OVER their quota
-     if number_of_houses > quota
-       money += 0.50
-
-       ## If at the end of the day the paperboy hasn't met their quota, they lose $2
-     elsif number_of_houses < quota
-       earnings - 2
-
-     else
-       "#{name}, you've met your quota!"
-     end
-    #  #End of if
-
-
-
-
+    #If the paperboy doesn't meet his quota, this
+    #subtracts $2 from his total earnings
+    @earnings -= 2 if @number_of_houses < quota
+    puts "#{name} has not met his quota, and has lost $2"
+    return @number_of_houses.to_f
   end #end paperboy_deliver method
 
   def report
-    if @side == "even"
-      puts "Im #{name}, i delivered #{@counter} paper and earned #{@money.to_f}"
-    else
-      puts  "Im #{name}, i delivered #{@counter} paper and earned #{@money.to_f}"
-    end
+    puts "#{name} has delievered #{@number_of_houses} papers. He has earned a total of $#{@earnings}!"
   end
 
 
 
 
 end #end class
-#sam = Paperboy.new('sam', 50, 0, "odd", 0)
+#sam = Paperboy.new("sam","odd")
